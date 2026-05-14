@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Before Term Starts — Student Preparation Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+:root{
+  --primary:#ea37a3; --primary-light:#fdf1f5;
+  --teal:#0a8080;    --teal-light:#e6ffff;
+  --purple:#6c35c9;  --purple-light:#f3eeff;
+  --gold:#c87900;    --gold-light:#fff8e6;
+  --blue:#2563a8;    --blue-light:#eef4ff;
+  --dark:#1a1a2e;    --grid:#e8e8e8;
+  --shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:"Space Mono","IBM Plex Mono",monospace;
+  background:#f4f4f4;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:60px 60px;background-attachment:fixed;
+  color:var(--dark);padding:20px 14px;line-height:1.6;font-size:14px;
+}
+.container{max-width:980px;margin:0 auto;background:rgba(255,255,255,0.98);border:3px double var(--teal);border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.1);padding:2rem 2.5rem;}
+@media(max-width:680px){.container{padding:1.2rem;}}
+
+/* Header */
+.page-header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:3px dotted var(--primary);}
+.page-header h1{font-size:1.7rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem;}
+.subtitle{font-size:0.78rem;color:var(--teal);letter-spacing:2px;text-transform:uppercase;}
+.intro-text{text-align:center;font-size:0.92rem;color:#555;margin-bottom:1.5rem;line-height:1.7;}
+
+/* Priority banner */
+.priority-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:1.5rem;}
+.priority-card{border-radius:10px;padding:12px 10px;text-align:center;border-left:4px solid;cursor:pointer;transition:transform 0.2s;}
+.priority-card:hover{transform:translateY(-2px);}
+.priority-card h4{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.priority-card p{font-size:0.74rem;margin:0;opacity:0.85;}
+.pc-adobe{background:var(--gold-light);border-color:var(--gold);} .pc-adobe h4{color:var(--gold);}
+.pc-print{background:var(--teal-light);border-color:var(--teal);} .pc-print h4{color:var(--teal);}
+.pc-remote{background:var(--purple-light);border-color:var(--purple);} .pc-remote h4{color:var(--purple);}
+.pc-prep{background:var(--primary-light);border-color:var(--primary);} .pc-prep h4{color:var(--primary);}
+
+/* Progress */
+.prog-wrap{height:7px;background:#eee;border-radius:4px;margin-bottom:1.2rem;overflow:hidden;}
+.prog-bar{height:100%;width:25%;background:linear-gradient(90deg,var(--primary),var(--teal));border-radius:4px;transition:width 0.4s ease;}
+
+/* Tabs */
+.tab-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1.8rem;}
+@media(max-width:500px){.tab-nav{grid-template-columns:repeat(2,1fr);}}
+.tab-btn{background:#f9f9f9;border:2px solid #ddd;border-radius:10px;padding:10px 5px;text-align:center;cursor:pointer;transition:all 0.22s ease;min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.tab-btn:hover{transform:translateY(-3px);box-shadow:0 5px 14px rgba(0,0,0,0.1);}
+.tab-btn .ti{font-size:1.3rem;} .tab-btn .tl{font-size:0.64rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;} .tab-btn .ts{font-size:0.56rem;opacity:0.65;}
+.tab-btn.active-tab{color:white;transform:translateY(-3px);box-shadow:0 5px 14px rgba(0,0,0,0.16);}
+.tab-btn[data-tab="adobe"].active-tab{background:var(--gold);border-color:var(--gold);}
+.tab-btn[data-tab="print"].active-tab{background:var(--teal);border-color:var(--teal);}
+.tab-btn[data-tab="remote"].active-tab{background:var(--purple);border-color:var(--purple);}
+.tab-btn[data-tab="prep"].active-tab{background:var(--primary);border-color:var(--primary);}
+
+/* Sections */
+.section{display:none;animation:fadeIn 0.35s ease;} .section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+
+/* Banners */
+.s-banner{padding:11px 18px;border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:1.2rem;border:2px solid;text-align:center;position:relative;overflow:hidden;}
+.s-banner::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;}
+.b-gold{background:var(--gold-light);color:var(--gold);border-color:var(--gold);} .b-gold::before{background:var(--gold);}
+.b-teal{background:var(--teal-light);color:var(--teal);border-color:var(--teal);} .b-teal::before{background:var(--teal);}
+.b-purple{background:var(--purple-light);color:var(--purple);border-color:var(--purple);} .b-purple::before{background:var(--purple);}
+.b-pink{background:var(--primary-light);color:var(--primary);border-color:var(--primary);} .b-pink::before{background:var(--primary);}
+
+/* Typography */
+h2{color:var(--teal);font-size:1.05rem;margin:1.4rem 0 0.7rem;display:flex;align-items:center;gap:8px;}
+h2::before{content:"";display:inline-block;width:5px;height:18px;background:var(--primary);border-radius:3px;flex-shrink:0;}
+h3{color:var(--primary);font-size:0.92rem;margin:0.9rem 0 0.5rem;}
+p{margin-bottom:0.8em;font-size:0.9rem;line-height:1.75;} a{color:var(--teal);}
+
+/* Info / tip boxes */
+.info-box{background:#f0fafa;border-left:4px solid var(--teal);padding:11px 14px;border-radius:0 8px 8px 0;margin:0.8rem 0;font-size:0.88rem;}
+.info-box.gold{background:var(--gold-light);border-color:var(--gold);}
+.info-box.purple{background:var(--purple-light);border-color:var(--purple);}
+.info-box.pink{background:var(--primary-light);border-color:var(--primary);}
+.info-box.green{background:#e8f5e9;border-color:#4caf50;}
+.info-box.red{background:#fff0f0;border-color:#e53935;}
+.info-box strong{color:var(--teal);}
+.info-box.gold strong{color:var(--gold);}
+.info-box.purple strong{color:var(--purple);}
+.info-box.pink strong{color:var(--primary);}
+.info-box.red strong{color:#e53935;}
+.info-box ul{margin-left:14px;margin-top:5px;} .info-box li{margin-bottom:3px;}
+.tip-box{background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;margin:0.8rem 0;font-size:0.86rem;}
+.tip-box h4{color:#7a5800;margin-bottom:4px;font-size:0.84rem;} .tip-box ul{margin-left:13px;} .tip-box li{margin-bottom:2px;}
+.warning-box{background:#fff0f0;border:2px solid #e53935;border-radius:8px;padding:11px 14px;margin:0.8rem 0;font-size:0.88rem;}
+.warning-box h4{color:#c62828;margin-bottom:5px;font-size:0.86rem;}
+.warning-box ul{margin-left:14px;} .warning-box li{margin-bottom:3px;}
+
+/* Price highlight */
+.price-box{
+  background:linear-gradient(135deg,var(--gold-light),white);
+  border:3px solid var(--gold);border-radius:14px;
+  padding:20px;text-align:center;margin:1.2rem 0;
+  box-shadow:var(--shadow);
+}
+.price-box .price{font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;}
+.price-box .price-sub{font-size:0.78rem;color:#888;margin-top:4px;}
+.price-box .price-desc{font-size:0.86rem;color:#555;margin:10px 0 14px;}
+.price-box .price-includes{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:16px;}
+.price-tag{background:white;border:1px solid var(--gold);border-radius:20px;padding:3px 10px;font-size:0.7rem;color:var(--gold);font-weight:700;}
+
+/* CTA buttons */
+.cta-btn{display:inline-block;color:white;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;transition:all 0.22s;box-shadow:0 4px 14px rgba(0,0,0,0.15);}
+.cta-btn:hover{transform:translateY(-2px);}
+.cta-gold{background:var(--gold);box-shadow:0 4px 14px rgba(200,121,0,0.3);}
+.cta-teal{background:var(--teal);box-shadow:0 4px 14px rgba(10,128,128,0.3);}
+.cta-purple{background:var(--purple);box-shadow:0 4px 14px rgba(108,53,201,0.3);}
+.cta-pink{background:var(--primary);box-shadow:0 4px 14px rgba(234,55,163,0.3);}
+
+/* Steps */
+.steps-list{margin:1rem 0;}
+.step-item{background:white;border-radius:12px;margin-bottom:8px;box-shadow:0 2px 10px rgba(0,0,0,0.06);overflow:hidden;border:1px solid #eee;}
+.step-header{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;user-select:none;transition:background 0.2s;}
+.step-header:hover{background:#f9f9f9;}
+.step-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.84rem;flex-shrink:0;color:white;}
+.step-num.gold{background:var(--gold);}
+.step-num.teal{background:var(--teal);}
+.step-num.purple{background:var(--purple);}
+.step-title-text{font-weight:700;font-size:0.9rem;flex:1;}
+.step-title-text.gold{color:var(--gold);}
+.step-title-text.teal{color:var(--teal);}
+.step-title-text.purple{color:var(--purple);}
+.step-toggle{font-size:0.78rem;color:#bbb;transition:transform 0.2s;}
+.step-body{padding:0 13px;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;}
+.step-body.open{padding:0 13px 13px;max-height:500px;}
+.step-body ul{margin-left:14px;margin-bottom:0.6em;} .step-body li{margin-bottom:3px;font-size:0.86rem;line-height:1.6;}
+.step-body p{font-size:0.86rem;margin-bottom:0.6em;}
+
+/* Image cards */
+.img-card{background:white;border:2px solid #eee;border-radius:12px;overflow:hidden;margin:1rem 0;box-shadow:0 3px 10px rgba(0,0,0,0.06);}
+.img-card-header{padding:8px 14px;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;}
+.img-card-header.gold{background:var(--gold-light);color:var(--gold);}
+.img-card-header.teal{background:var(--teal-light);color:var(--teal);}
+.img-card-header.purple{background:var(--purple-light);color:var(--purple);}
+.img-area{width:100%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;min-height:180px;overflow:hidden;}
+.img-area img{width:100%;height:100%;object-fit:cover;}
+.ph-box{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:20px;gap:6px;text-align:center;}
+.ph-box span:first-child{font-size:2rem;opacity:0.25;}
+.ph-box span:last-child{font-size:0.65rem;color:#bbb;}
+.img-caption{padding:8px 14px;font-size:0.76rem;color:#666;background:#fafafa;border-top:1px solid #eee;}
+
+/* Two-col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0.8rem 0;}
+@media(max-width:560px){.two-col{grid-template-columns:1fr;}}
+
+/* DPI visual */
+.dpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin:0.8rem 0;}
+.dpi-card{background:white;border:2px solid #eee;border-radius:10px;padding:10px 8px;text-align:center;}
+.dpi-card h4{font-size:0.78rem;font-weight:700;margin-bottom:5px;}
+.dpi-visual{width:40px;height:40px;margin:0 auto 5px;display:grid;border:1px solid #ddd;}
+.dpi-card p{font-size:0.68rem;color:#888;margin:0;}
+.dpi-card.good{border-color:#4caf50;} .dpi-card.good h4{color:#2e7d32;}
+.dpi-card.bad{border-color:#e53935;} .dpi-card.bad h4{color:#c62828;}
+
+/* Checklist */
+.checklist{background:white;border:2px solid var(--teal);border-radius:10px;padding:14px;margin:1.2rem 0;box-shadow:var(--shadow);}
+.checklist.gold{border-color:var(--gold);} .checklist.purple{border-color:var(--purple);} .checklist.pink{border-color:var(--primary);}
+.checklist h3{text-align:center;margin:0 0 8px;padding-bottom:7px;border-bottom:2px dashed var(--teal);font-size:0.88rem;color:var(--teal);}
+.checklist.gold h3{color:var(--gold);border-color:var(--gold);} .checklist.purple h3{color:var(--purple);border-color:var(--purple);} .checklist.pink h3{color:var(--primary);border-color:var(--primary);}
+.ci{display:flex;align-items:flex-start;gap:9px;margin-bottom:8px;}
+.chk{width:21px;height:21px;border:2px solid var(--teal);border-radius:4px;flex-shrink:0;cursor:pointer;position:relative;}
+.checklist.gold .chk{border-color:var(--gold);} .checklist.purple .chk{border-color:var(--purple);} .checklist.pink .chk{border-color:var(--primary);}
+.chk.checked::after{content:"✓";position:absolute;font-size:14px;font-weight:700;top:-1px;left:3px;color:var(--teal);}
+.checklist.gold .chk.checked::after{color:var(--gold);} .checklist.purple .chk.checked::after{color:var(--purple);} .checklist.pink .chk.checked::after{color:var(--primary);}
+.cl{font-weight:700;font-size:0.84rem;padding-top:1px;color:var(--teal);}
+.checklist.gold .cl{color:var(--gold);} .checklist.purple .cl{color:var(--purple);} .checklist.pink .cl{color:var(--primary);}
+
+/* Nav */
+.nav-btns{display:flex;justify-content:space-between;margin-top:1.8rem;padding-top:0.9rem;border-top:1px dashed #ccc;}
+.nav-btn{padding:9px 18px;border-radius:8px;font-family:inherit;font-size:0.84rem;font-weight:700;cursor:pointer;border:none;transition:all 0.22s;box-shadow:0 3px 8px rgba(0,0,0,0.09);}
+.nav-btn:hover{transform:translateY(-2px);}
+.btn-prev{background:#eee;color:#555;} .btn-prev::before{content:"← ";}
+.btn-next{background:var(--teal);color:white;} .btn-next::after{content:" →";}
+.btn-next.gold{background:var(--gold);} .btn-next.purple{background:var(--purple);} .btn-next.pink{background:var(--primary);}
+
+.print-btn{position:fixed;bottom:18px;right:18px;background:var(--teal);color:white;border:none;border-radius:50%;width:46px;height:46px;font-size:17px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;transition:all 0.22s;}
+.print-btn:hover{transform:translateY(-3px);}
+@media print{.print-btn,.tab-nav,.nav-btns,.prog-wrap{display:none;}body{background:white;}.container{border:none;box-shadow:none;padding:0;}.section{display:block!important;page-break-before:always;}}
+footer{text-align:center;margin-top:1.8rem;padding-top:0.9rem;font-size:0.7rem;color:#999;border-top:1px dashed var(--primary);}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="subtitle">IELS Level 5 · Before Term Starts</div>
+    <h1>✦ Pre-Term Preparation Guide</h1>
+  </div>
+
+  <p class="intro-text">Complete these three steps <strong>before your first lesson</strong>. They will make sure you are ready to work from day one.</p>
+
+  <!-- Priority cards -->
+  <div class="priority-strip">
+    <div class="priority-card pc-adobe" onclick="goTo('adobe')">
+      <h4>⭐ Priority 1</h4>
+      <p>Get the Adobe CC Deal</p>
+    </div>
+    <div class="priority-card pc-print" onclick="goTo('print')">
+      <h4>🖨️ Priority 2</h4>
+      <p>Print &amp; Scan at UAL</p>
+    </div>
+    <div class="priority-card pc-remote" onclick="goTo('remote')">
+      <h4>💻 Priority 3</h4>
+      <p>No Laptop? Remote Access</p>
+    </div>
+    <div class="priority-card pc-prep" onclick="goTo('prep')">
+      <h4>📋 Checklist</h4>
+      <p>Am I ready for Lesson 1?</p>
+    </div>
+  </div>
+
+  <div class="prog-wrap"><div class="prog-bar" id="progressBar"></div></div>
+
+  <div class="tab-nav">
+    <div class="tab-btn active-tab" data-tab="adobe"><span class="ti">🎨</span><span class="tl">Adobe CC</span><span class="ts">Priority 1</span></div>
+    <div class="tab-btn" data-tab="print"><span class="ti">🖨️</span><span class="tl">Print &amp; Scan</span><span class="ts">Priority 2</span></div>
+    <div class="tab-btn" data-tab="remote"><span class="ti">💻</span><span class="tl">Remote Access</span><span class="ts">No laptop?</span></div>
+    <div class="tab-btn" data-tab="prep"><span class="ti">📋</span><span class="tl">Checklist</span><span class="ts">Ready?</span></div>
+  </div>
+
+  <!-- ══════════════ ADOBE ══════════════ -->
+  <div id="adobe" class="section active">
+    <div class="s-banner b-gold">🎨 Priority 1 — Get the Adobe Creative Cloud Deal</div>
+
+    <div class="warning-box">
+      <h4>⚠️ Do this before term starts</h4>
+      <ul>
+        <li>Many lessons involve Photoshop and other Adobe apps — you need these installed and ready</li>
+        <li>The UAL deal gives you <strong>all Adobe apps</strong> at a significantly reduced price</li>
+        <li>iPad versions are <strong>not recommended</strong> — always use the desktop version</li>
+      </ul>
+    </div>
+
+    <div class="price-box">
+      <div class="price">~£48</div>
+      <div class="price-sub">per year · UAL student rate · subject to update</div>
+      <div class="price-desc">Full Adobe Creative Cloud Suite · 100GB cloud storage · all platforms</div>
+      <div class="price-includes">
+        <span class="price-tag">Photoshop</span>
+        <span class="price-tag">Illustrator</span>
+        <span class="price-tag">InDesign</span>
+        <span class="price-tag">Lightroom</span>
+        <span class="price-tag">Premiere Pro</span>
+        <span class="price-tag">After Effects</span>
+        <span class="price-tag">+ more</span>
+      </div>
+      <a href="https://estore.arts.ac.uk/product-catalogue/university-of-the-arts-london/it-services/adobe-creative-cloud-for-4159" target="_blank" class="cta-btn cta-gold">🎨 Get the UAL Adobe CC Deal →</a>
+    </div>
+
+    <h2>What to Do</h2>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num gold">1</div>
+          <div class="step-title-text gold">Purchase the deal</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Click the button above to go to the UAL eStore</li>
+            <li>Log in with your UAL student credentials</li>
+            <li>Purchase the Adobe Creative Cloud package (~£48/year)</li>
+            <li><strong>Do this as soon as possible</strong> — the link will be updated closer to term</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num gold">2</div>
+          <div class="step-title-text gold">Install Adobe Creative Cloud</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Download the <strong>Adobe Creative Cloud desktop app</strong> from adobe.com</li>
+            <li>Sign in with the Adobe account linked to your UAL email</li>
+            <li>Install <strong>Photoshop</strong> first — this is used most in lessons</li>
+            <li>Make sure you install the <strong>English version</strong> to avoid issues with session instructions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num gold">3</div>
+          <div class="step-title-text gold">Check it works</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Open Photoshop and create a test document</li>
+            <li>Check the version is up to date — <strong>Generative AI features</strong> require the latest version</li>
+            <li>UAL computers may not have the latest version, so having your own is strongly recommended</li>
+          </ul>
+          <div class="tip-box" style="margin-top:8px;">
+            <h4>💡 Bring your laptop to class</h4>
+            It is strongly recommended to bring your own laptop with Adobe CC installed. Many digital skills lessons are online, so having your own device allows you to work flexibly from anywhere.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot placeholder -->
+    <div class="img-card">
+      <div class="img-card-header gold">📸 UAL Adobe CC eStore</div>
+      <div class="img-area" style="min-height:200px;">
+        <img src="images/adobe-store.jpg" alt="UAL Adobe CC eStore" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="ph-box" style="display:none;"><span>🎨</span><span>Add: images/adobe-store.jpg</span></div>
+      </div>
+      <div class="img-caption">The UAL eStore — log in with your UAL credentials to access the student deal.</div>
+    </div>
+
+    <div class="checklist gold">
+      <h3>Adobe CC Checklist ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Purchased the UAL Adobe CC deal</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Installed Adobe Creative Cloud desktop app</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Installed Photoshop (English version, latest update)</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Opened Photoshop and confirmed it works</span></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn btn-prev" disabled>Previous</button>
+      <button class="nav-btn btn-next" onclick="goTo('print')">Priority 2: Print &amp; Scan</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ PRINT ══════════════ -->
+  <div id="print" class="section">
+    <div class="s-banner b-teal">🖨️ Priority 2 — Printing &amp; Scanning at UAL</div>
+
+    <p style="text-align:center;margin-bottom:1.2rem;">You will need to print and scan your homework to bring to class. UAL printers are available on campus and are free to use once you have set up your account.</p>
+
+    <div class="info-box">
+      <strong>Where are the printers?</strong>
+      <ul>
+        <li>IT Open Access areas on campus</li>
+        <li>The Social Space / left of main entrance</li>
+        <li>Two print queues available: <strong>Arts Mono</strong> (black &amp; white) and <strong>Arts Colour</strong></li>
+      </ul>
+    </div>
+
+    <h2>Setting Up Your Print Account</h2>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num teal">1</div>
+          <div class="step-title-text teal">Set up printing from your device</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Go to <a href="https://artsprint.arts.ac.uk" target="_blank">artsprint.arts.ac.uk</a></li>
+            <li>Install <strong>Mobility Print</strong> on your own device</li>
+            <li>Log in with your UAL student credentials</li>
+            <li>Top up your print credit using your UAL ID card</li>
+          </ul>
+          <div style="text-align:center;margin-top:10px;">
+            <a href="https://www.arts.ac.uk/students/it-services/printing" target="_blank" class="cta-btn cta-teal">🖨️ UAL Printing Information →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num teal">2</div>
+          <div class="step-title-text teal">Print at a UAL printer</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Send your document to print from your device or the UAL computers</li>
+            <li>Go to the printer and <strong>swipe your UAL ID card</strong></li>
+            <li>Select your print job and collect</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num teal">3</div>
+          <div class="step-title-text teal">Scan your A3 design sheets</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Open the printer lid and place your paper <strong>face down on the glass</strong></li>
+            <li>Swipe your UAL ID card on the printer</li>
+            <li>Select <strong>Scan → Scan to Email</strong></li>
+            <li>Your scan will be sent to your UAL email address</li>
+          </ul>
+          <div class="tip-box" style="margin-top:8px;">
+            <h4>📸 Photographing instead of scanning</h4>
+            You can photograph 3D experimentations or A3 sheets produced in class — but always at a <strong>high resolution (300dpi+)</strong> for best quality.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scanning steps image -->
+    <div class="img-card">
+      <div class="img-card-header teal">📸 How to Scan Using UAL Printers</div>
+      <div class="img-area" style="min-height:200px;">
+        <img src="images/scan-steps.jpg" alt="Scanning steps at UAL printers" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="ph-box" style="display:none;"><span>🖨️</span><span>Add: images/scan-steps.jpg</span></div>
+      </div>
+      <div class="img-caption">Swipe ID card → Select scan → Scan to email. Simple!</div>
+    </div>
+
+    <h2>Resolution Guide — Why It Matters</h2>
+    <p>Always scan or photograph your work at the correct resolution. Low resolution makes images blurry and unusable in Photoshop.</p>
+
+    <div class="dpi-grid">
+      <div class="dpi-card bad">
+        <h4>5 dpi</h4>
+        <div class="dpi-visual" style="grid-template-columns:repeat(2,1fr);background:repeating-linear-gradient(45deg,#ccc,#ccc 4px,#eee 4px,#eee 8px);"></div>
+        <p>Very blurry ✗</p>
+      </div>
+      <div class="dpi-card bad">
+        <h4>10 dpi</h4>
+        <div class="dpi-visual" style="grid-template-columns:repeat(3,1fr);background:repeating-linear-gradient(45deg,#bbb,#bbb 3px,#eee 3px,#eee 6px);"></div>
+        <p>Still blurry ✗</p>
+      </div>
+      <div class="dpi-card bad">
+        <h4>72 dpi</h4>
+        <div class="dpi-visual" style="background:repeating-linear-gradient(45deg,#999,#999 2px,#eee 2px,#eee 4px);"></div>
+        <p>Screen only ✗</p>
+      </div>
+      <div class="dpi-card good">
+        <h4>300 dpi</h4>
+        <div class="dpi-visual" style="background:linear-gradient(135deg,#0a8080,#e6ffff);"></div>
+        <p>Print quality ✓</p>
+      </div>
+    </div>
+
+    <div class="info-box red">
+      <strong>Always scan at 300 dpi or higher</strong> — save as JPEG. This is required for all homework and portfolio work.
+    </div>
+
+    <!-- DPI comparison image -->
+    <div class="img-card">
+      <div class="img-card-header teal">📸 Resolution Comparison</div>
+      <div class="img-area" style="min-height:180px;">
+        <img src="images/dpi-comparison.jpg" alt="DPI comparison" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="ph-box" style="display:none;"><span>🔍</span><span>Add: images/dpi-comparison.jpg</span></div>
+      </div>
+      <div class="img-caption">Left to right: 5dpi · 10dpi · 20dpi · 72dpi · 300dpi — always use 300dpi.</div>
+    </div>
+
+    <div class="checklist">
+      <h3>Print &amp; Scan Checklist ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Set up Mobility Print on my device</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Know how to swipe ID card to print</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Know how to scan to email at 300 dpi</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Homework scanned and saved as JPEG</span></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn btn-prev" onclick="goTo('adobe')">Priority 1</button>
+      <button class="nav-btn btn-next purple" onclick="goTo('remote')">Priority 3: Remote Access</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ REMOTE ══════════════ -->
+  <div id="remote" class="section">
+    <div class="s-banner b-purple">💻 Priority 3 — No Laptop? Remote Computer Access</div>
+
+    <div class="warning-box">
+      <h4>⚠️ Important — read this first</h4>
+      <ul>
+        <li>It is <strong>strongly recommended</strong> to bring your own laptop to class</li>
+        <li>Many digital skills lessons are <strong>online</strong> — having your own device gives you flexibility to work anywhere</li>
+        <li>Remote access works but is <strong>slower and less reliable</strong> than having Adobe CC installed locally</li>
+      </ul>
+    </div>
+
+    <div class="two-col">
+      <div style="background:var(--primary-light);border:2px solid var(--primary);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:6px;">💻</div>
+        <h3 style="color:var(--primary);margin-top:0;font-size:0.88rem;">Best Option</h3>
+        <p style="font-size:0.8rem;color:#555;margin:0;">Own laptop with Adobe CC installed — full speed, works online and in class</p>
+      </div>
+      <div style="background:var(--purple-light);border:2px solid var(--purple);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:6px;">🖥️</div>
+        <h3 style="color:var(--purple);margin-top:0;font-size:0.88rem;">Alternative Option</h3>
+        <p style="font-size:0.8rem;color:#555;margin:0;">UAL Remote Desktop — access a UAL computer virtually from any device</p>
+      </div>
+    </div>
+
+    <h2>How to Access UAL Remote Desktop</h2>
+
+    <!-- Remote desktop image -->
+    <div class="img-card">
+      <div class="img-card-header purple">📸 UAL Remote Desktop Access</div>
+      <div class="img-area" style="min-height:200px;">
+        <img src="images/remote-desktop.jpg" alt="UAL remote desktop access" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="ph-box" style="display:none;"><span>🖥️</span><span>Add: images/remote-desktop.jpg</span></div>
+      </div>
+      <div class="img-caption">UAL Remote Desktop — access Creative Suite virtually from any device.</div>
+    </div>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num purple">1</div>
+          <div class="step-title-text purple">Download VMware Horizon Client</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Go to the UAL Remote Desktop link below</li>
+            <li>Download the <strong>VMware Horizon Client</strong> for your device (recommended over the browser version)</li>
+            <li>Install it on your laptop, tablet, or desktop computer</li>
+          </ul>
+          <div style="text-align:center;margin-top:10px;">
+            <a href="https://desktop.arts.ac.uk/?includeNativeClientLaunch=true" target="_blank" class="cta-btn cta-purple">🖥️ Access UAL Remote Desktop →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num purple">2</div>
+          <div class="step-title-text purple">Log in with your UAL credentials</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Use your UAL username and password</li>
+            <li>Select a UAL computer to connect to</li>
+            <li>You will see a full UAL desktop with all software installed</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num purple">3</div>
+          <div class="step-title-text purple">Open Photoshop and work remotely</div>
+          <div class="step-toggle">▼</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Find Photoshop in the applications menu</li>
+            <li>Open your files — save to <strong>UAL OneDrive or cloud storage</strong> so you don't lose work</li>
+            <li>Note: performance depends on your internet connection speed</li>
+          </ul>
+          <div class="tip-box" style="margin-top:8px;">
+            <h4>💡 Save your work carefully</h4>
+            Remote desktop sessions can time out. Always save frequently to OneDrive or a cloud folder, not just the remote desktop.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box purple">
+      <strong>UAL computers have:</strong>
+      <ul>
+        <li>Full Adobe Creative Suite installed</li>
+        <li>All the same software you would use in class</li>
+        <li>Access from any device — laptop, home computer, even a tablet</li>
+      </ul>
+    </div>
+
+    <div class="checklist purple">
+      <h3>Remote Access Checklist ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Downloaded VMware Horizon Client</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Logged in with UAL credentials successfully</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Opened Photoshop via remote desktop</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Know how to save work to cloud storage</span></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn btn-prev" onclick="goTo('print')">Priority 2</button>
+      <button class="nav-btn btn-next pink" onclick="goTo('prep')">Final Checklist</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ PREP CHECKLIST ══════════════ -->
+  <div id="prep" class="section">
+    <div class="s-banner b-pink">📋 Am I Ready for Lesson 1?</div>
+
+    <p style="text-align:center;margin-bottom:1.2rem;">Work through this checklist before your first session. Tick everything off and you are ready to go.</p>
+
+    <!-- Homework prep image -->
+    <div class="img-card">
+      <div class="img-card-header" style="background:var(--primary-light);color:var(--primary);">📸 Lesson 1 Preparation</div>
+      <div class="img-area" style="min-height:200px;">
+        <img src="images/lesson1-prep.jpg" alt="Lesson 1 preparation overview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="ph-box" style="display:none;"><span>📋</span><span>Add: images/lesson1-prep.jpg</span></div>
+      </div>
+      <div class="img-caption">Overview of what to bring and prepare for Lesson 1.</div>
+    </div>
+
+    <h2>Software &amp; Equipment</h2>
+    <div class="checklist gold">
+      <h3>Adobe CC ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Purchased UAL Adobe CC deal (~£48)</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Photoshop installed and up to date (English version)</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Laptop charged and ready to bring to class</span></div>
+    </div>
+
+    <h2>Research &amp; Homework</h2>
+    <div class="checklist pink">
+      <h3>Pre-Project Preparation ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Gathered digital photographic research images relevant to my design project</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Read the "Introduction to Study in Fashion" PowerPoint on Moodle</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Images available in digital format ready to edit and refine</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Any paper-based work scanned at 300 dpi and saved as JPEG</span></div>
+    </div>
+
+    <h2>Printing &amp; Scanning</h2>
+    <div class="checklist">
+      <h3>Printing Ready ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Mobility Print set up on my device</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Know how to scan to email at UAL printers</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Print credit topped up on UAL ID card</span></div>
+    </div>
+
+    <div class="info-box green">
+      <strong>✓ You are ready for Lesson 1 if you have ticked everything above.</strong><br>
+      If you have any questions before term starts, contact your tutor via Moodle.
+    </div>
+
+    <div style="text-align:center;margin:1.5rem 0;">
+      <a href="https://moodle.arts.ac.uk" target="_blank" class="cta-btn cta-teal">🎓 Go to Moodle →</a>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn btn-prev" onclick="goTo('remote')">Priority 3</button>
+      <button class="nav-btn btn-next" onclick="goTo('adobe')">Back to Start</button>
+    </div>
+  </div>
+
+  <footer>© 2025 Fashion Design — IELS Level 5 · Pre-Term Preparation Guide</footer>
+</div>
+
+<button class="print-btn" onclick="window.print()" title="Print">🖨️</button>
+
+<script>
+const TABS=['adobe','print','remote','prep'];
+function goTo(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active-tab'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector('[data-tab="'+id+'"]').classList.add('active-tab');
+  document.getElementById('progressBar').style.width=((TABS.indexOf(id)+1)/TABS.length*100)+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>goTo(b.dataset.tab)));
+document.getElementById('progressBar').style.width=(1/TABS.length*100)+'%';
+function tog(el){el.classList.toggle('checked');}
+function toggleStep(header){
+  const body=header.nextElementSibling;
+  const arrow=header.querySelector('.step-toggle');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  arrow.textContent=isOpen?'▼':'▲';
+}
+</script>
+</body>
+</html>
